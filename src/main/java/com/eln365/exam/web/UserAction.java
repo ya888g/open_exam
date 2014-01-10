@@ -9,7 +9,6 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 public class UserAction extends ActionSupport {
 	public String login() {
-		 double CID = 0x00d8;
 		return "login";
 	}
 	
