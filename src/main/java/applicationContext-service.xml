@@ -3,6 +3,9 @@
     "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
+	<bean id="user" class="com.eln365.exam.model.User" singleton="false">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
 	<bean id="userAction" class="com.eln365.exam.web.UserAction" singleton="false">
 	</bean>
 </beans>
