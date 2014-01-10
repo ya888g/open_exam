@@ -1,0 +1,11 @@
+www.xuelecn.com
+
+git使用：
+http://wenku.baidu.com/link?url=w5QrUBC2yRfJ_aVAJR19qiH5ILIv4qtkru5h2gOs_gXt4cUAC4k6OoCDJgMnqwKiBl8gYvTjIWOb2gwUcVwhKgFDCmyJI1djtC_u8-fkfH7
+http://blog.csdn.net/kaizi318/article/details/10165499
+
+spring mvc:
+http://limingnihao.iteye.com/blog/830409
+
+
+http://localhost:8080/open_exam/userAction!index.do
