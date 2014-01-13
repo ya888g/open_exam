@@ -28,7 +28,7 @@ public class UserAction extends ActionSupport {
 		User user = new User();
 
 		user.setId(ExamUtils.getUUID());
-		user.setPassword("123456");
+		user.setPassword(ExamUtils.getMd5Str("123456"));
 		user.setRealName("杨庆雷");
 		user.setUserName("ya888g");
 		user.setBirthday(new Date());
