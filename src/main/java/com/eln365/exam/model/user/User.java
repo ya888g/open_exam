@@ -1,8 +1,6 @@
-package com.eln365.exam.model;
+package com.eln365.exam.model.user;
 
 import java.util.Date;
-
-import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  *
@@ -19,17 +17,6 @@ public class User {
 	private Date birthday;
 	private String email;
 	private String mobile;
-	
-	private JdbcTemplate jdbcTemplate;
-	
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-	
-	public boolean addUser(User user){
-//		jdbcTemplate.execute(action)
-		return true;
-	}
 	
 	public String getId() {
 		return id;

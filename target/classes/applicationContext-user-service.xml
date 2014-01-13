@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="userService" class="com.eln365.exam.service.user.UserService" singleton="false">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="user" class="com.eln365.exam.model.user.User" singleton="false">
+	</bean>
+	<bean id="userAction" class="com.eln365.exam.web.user.UserAction" singleton="false">
+		<property name="userService" ref="userService" />
+	</bean>
+</beans>
