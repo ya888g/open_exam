@@ -5,9 +5,12 @@ import java.util.UUID;
 import org.springframework.util.DigestUtils;
 
 /**
- * @author yangqinglei E-mail: yangqinglei@gw.com.cn
- * @version 创建时间：2014-1-13 下午2:50:51 类说明
+ * 
+ * @email: ya888g@163.com @company: eln365.com
+ * 
+ * @author: 时光倒流 @date：2014-1-11上午12:32:28
  */
+
 public class ExamUtils {
 	public synchronized static String getUUID() {
 		return UUID.randomUUID().toString().replace("-", "");

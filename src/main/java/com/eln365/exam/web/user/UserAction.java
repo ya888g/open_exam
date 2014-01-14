@@ -9,8 +9,10 @@ import com.eln365.exam.utils.ExamUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * @author yangqinglei E-mail: yangqinglei@gw.com.cn
- * @version 创建时间：2014-1-10 下午3:28:39 类说明
+ * 
+ * @email: ya888g@163.com @company: eln365.com
+ * 
+ * @author: 时光倒流 @date：2014-1-11上午12:32:28
  */
 @SuppressWarnings("serial")
 public class UserAction extends ActionSupport {
@@ -29,7 +31,7 @@ public class UserAction extends ActionSupport {
 
 		user.setId(ExamUtils.getUUID());
 		user.setPassword(ExamUtils.getMd5Str("123456"));
-		user.setRealName("杨庆雷");
+		user.setRealName("时光倒流");
 		user.setUserName("ya888g");
 		user.setBirthday(new Date());
 		user.setEmail("ya888g@163.com");
