@@ -1,6 +1,5 @@
 package com.eln365.exam.web.user;
 
-import java.util.Collection;
 import java.util.Date;
 
 import com.eln365.exam.model.user.User;
