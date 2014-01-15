@@ -1,5 +1,5 @@
 #login{
-	BACKGROUND: url(../images/login/login_main.jpg) no-repeat 50% 30%;height:100%;width:100%;
+	BACKGROUND: url(../images/login/login_main.jpg) no-repeat 50% 10%;height:100%;width:100%;
 }
 
 
@@ -8,9 +8,12 @@ ul {
 	LIST-STYLE-TYPE: none
 }
 
-li{
+ul li{
 	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
 	LIST-STYLE-TYPE: none;
+}
+ul li p{
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
 }
 
 a:link{ color:#000000}
