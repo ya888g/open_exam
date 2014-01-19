@@ -7,32 +7,34 @@
 </head>
 <BODY>
 <div id='login' align=center>
-	<div style="position:relative;margin-top: 192px;margin-left: -25px;">
+&nbsp;
+	<div style="position:relative;margin-top:170px; margin-left: -25px;">
 		<ul>
-			<li style="list-style-type:none;">
+			<li style="list-style-type:none;padding-top:5px;">
 				<p>
-					<input type='text' size="20" />
+					<input type='text' size="20" style="outline:none;border:0px;"/>
 				</p>
 			</li>
-			<li style="list-style-type:none;margin-top: 40px;">
+			<li style="list-style-type:none;padding-top: 48px;">
 				<p>
-					<input type='password' size="20" />
+					<input type='password' size="20" style="outline:none;border:0px;"/>
 				</p>
 				
 			</li>
 			<li style="list-style-type:none;">
 				<p style="margin-top: 10px;margin-left:-60px;">
-					<input type='checkbox' style=""/>Remember Me
+					<input type='checkbox'/>Remember Me
 				</p>
 			</li>
 			<li style="list-style-type:none;">
 				<img src='./resources/images/login/login_button.jpg' style="margin-top:10px;margin-left:120px;" />
 			</li>
-			<li style="list-style-type:none;margin-top:20px;">
-				<a style="margin-left:-100px;" href="#" class='redlink' target="_blank">
+			<li style="list-style-type:none;padding-top:25px;">
+				<a style="margin-left:40px;" href="#" class='redlink' target="_blank">
 					注册
 				</a>
-				<a href="www.163.com" class='redlink' target="_blank">
+				
+				<a href="www.163.com" style="margin-left:60px;" class='redlink' target="_blank">
 					找回密码
 				</a>
 			</li>
