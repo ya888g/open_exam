@@ -22,9 +22,15 @@ public class UserAction extends ActionSupport {
 	}
 
 	public String login() {
-		return "login";
+		
+		
+		
+		
+		return "main";
 	}
-
+	
+	
+	
 	public String index() {
 		User user = new User();
 

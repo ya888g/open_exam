@@ -3,9 +3,16 @@
 <head>
 <title></title>
 <link type="text/css" rel="stylesheet" href="./resources/css/login.css" />
+<script>
+	function checkLogin(){
+		alert("aaa");
+		
+	}
 
+</script>
 </head>
 <BODY>
+<form id="loginForm" action="login.jhtml" method="post">
 <div id='login' align=center>
 &nbsp;
 	<div style="position:relative;margin-top:170px; margin-left: -25px;">
@@ -27,7 +34,9 @@
 				</p>
 			</li>
 			<li style="list-style-type:none;">
-				<img src='./resources/images/login/login_button.jpg' style="margin-top:10px;margin-left:120px;" />
+				<a href="#" onclick="checkLogin();">
+					<img src='./resources/images/login/login_button.jpg' style="margin-top:10px;margin-left:120px;" />
+				</a>
 			</li>
 			<li style="list-style-type:none;padding-top:25px;">
 				<a style="margin-left:40px;" href="#" class='redlink' target="_blank">
@@ -43,5 +52,6 @@
 		
 	</div>
 </div>
+</form>
 </body>
 </html>
