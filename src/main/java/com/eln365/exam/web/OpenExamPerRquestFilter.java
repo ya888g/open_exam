@@ -25,7 +25,7 @@ public class OpenExamPerRquestFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 		StringBuffer URL = request.getRequestURL();
-		if (URL.indexOf("/login.jsp") >= 0 || URL.indexOf("/login.jhtml") >= 0 || URL.indexOf("/logout.jhtml") >= 0) {
+		if (URL.indexOf("/login.jsp") >= 0 || URL.indexOf("/userlogin.do") >= 0 || URL.indexOf("/logout.jhtml") >= 0) {
 			filterChain.doFilter(request, response);
 			return;
 		}
