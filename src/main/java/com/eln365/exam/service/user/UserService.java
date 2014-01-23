@@ -16,6 +16,10 @@ public class UserService {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
+	
+	public User getUser(String userName,String password){
+		return null;
+	}
 
 	public void saveUser(User user) {
 		StringBuilder sql = new StringBuilder();

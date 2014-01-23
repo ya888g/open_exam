@@ -2,10 +2,12 @@ package com.eln365.exam.web.user;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import com.eln365.exam.model.user.User;
 import com.eln365.exam.service.user.UserService;
 import com.eln365.exam.utils.ExamUtils;
-import com.opensymphony.xwork2.ActionSupport;
+import com.eln365.exam.web.BaseAction;
 
 /**
  * 
@@ -14,23 +16,40 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author: 时光倒流 @date：2014-1-11上午12:32:28
  */
 @SuppressWarnings("serial")
-public class UserAction extends ActionSupport {
+public class UserAction extends BaseAction {
+	public static final String USER_SESSION_KEY = "gwuser";
+	private User user;
 	private UserService userService;
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public User getUser() {
+		return user;
+	}
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 
 	public String login() {
-		
-		
-		
-		
-		return "main";
+		System.out.println("fffffffffff");
+		String userName = user.getUserName();
+		String password = user.getPassword();
+
+		User user = userService.getUser(userName, password);
+		if (user != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute(USER_SESSION_KEY, user);
+			return "main";
+		} else {
+			request.setAttribute("message", "用户名或密码不正确！");
+			return "login";
+		}
+
 	}
-	
-	
-	
+
 	public String index() {
 		User user = new User();
 

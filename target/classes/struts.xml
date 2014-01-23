@@ -11,9 +11,9 @@
 			<result name="login" type="redirect">/pages/login.jsp</result>
 		</global-results>
 
-		<action name="userAction" class="userAction">
-            <result name="index">/index.jsp</result>
-            <result name="main">/main.jsp</result>
+		<action name="user*" class="userAction" method="{1}">
+            <result name="index">/pages/index.jsp</result>
+            <result name="main">/pages/main.jsp</result>
         </action>
 
 	</package>
