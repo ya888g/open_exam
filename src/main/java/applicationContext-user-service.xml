@@ -3,12 +3,17 @@
     "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-	<bean id="userService" class="com.eln365.exam.service.user.UserService" singleton="false">
+	<bean id="userService" class="com.eln365.exam.service.user.UserService" >
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
-	<bean id="user" class="com.eln365.exam.model.user.User" singleton="false">
+	<bean id="user" class="com.eln365.exam.model.user.User" >
 	</bean>
 	<bean id="userAction" class="com.eln365.exam.web.user.UserAction" singleton="false">
 		<property name="userService" ref="userService" />
 	</bean>
+	
+	<bean id="BankTypeAction" class="com.eln365.exam.web.questBank.BankTypeAction" singleton="false">
+		<property name="userService" ref="userService" />
+	</bean>
+	
 </beans>
