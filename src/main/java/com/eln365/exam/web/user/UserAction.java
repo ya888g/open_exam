@@ -34,7 +34,6 @@ public class UserAction extends BaseAction {
 	}
 
 	public String login() {
-		System.out.println("fffffffffff");
 		String userName = user.getUserName();
 		String password = user.getPassword();
 
