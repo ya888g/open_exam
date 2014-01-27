@@ -15,6 +15,15 @@
             <result name="index">/pages/index.jsp</result>
             <result name="main">/pages/main.jsp</result>
         </action>
+        
+        <action name="bankType*" class="bankTypeAction" method="{1}">
+            <result name="bankType">/pages/questionBank/bankType.jsp</result>
+        </action>
+        
+        <action name="exam*" class="examAction" method="{1}">
+            <result name="query">/pages/exam/exam.jsp</result>
+        </action>
+
 
 	</package>
 

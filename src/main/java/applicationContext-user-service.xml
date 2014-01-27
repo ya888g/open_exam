@@ -12,8 +12,18 @@
 		<property name="userService" ref="userService" />
 	</bean>
 	
-	<bean id="BankTypeAction" class="com.eln365.exam.web.questBank.BankTypeAction" singleton="false">
-		<property name="userService" ref="userService" />
+	<bean id="bankTypeService" class="com.eln365.exam.service.questionBank.BankTypeService" >
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="bankTypeAction" class="com.eln365.exam.web.questionBank.BankTypeAction" singleton="false">
+		<property name="bankTypeService" ref="bankTypeService" />
+	</bean>
+	
+	<bean id="examService" class="com.eln365.exam.service.exam.ExamService" >
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="examAction" class="com.eln365.exam.web.exam.ExamAction" singleton="false">
+		<property name="examService" ref="examService" />
 	</bean>
 	
 </beans>

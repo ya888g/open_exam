@@ -17,7 +17,7 @@ import com.eln365.exam.web.BaseAction;
  */
 @SuppressWarnings("serial")
 public class UserAction extends BaseAction {
-	public static final String USER_SESSION_KEY = "gwuser";
+	public static final String USER_SESSION_KEY = "openExamUser";
 	private User user;
 	private UserService userService;
 
