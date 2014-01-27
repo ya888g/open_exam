@@ -1,5 +1,8 @@
 package com.eln365.exam.service.user;
 
+import java.util.List;
+
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.eln365.exam.model.user.User;
@@ -18,8 +21,8 @@ public class UserService {
 	}
 	
 	public User getUser(String userName,String password){
-		
-		return null;
+		List<User> UserList = jdbcTemplate.query(" select * from user where userName=? AND password=? ", new Object[]{userName, password}, new BeanPropertyRowMapper<User>(User.class));
+		return UserList.size()>0?UserList.get(0):null;
 	}
 
 	public void saveUser(User user) {
