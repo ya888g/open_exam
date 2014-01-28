@@ -5,7 +5,6 @@
 <link type="text/css" rel="stylesheet" href="../resources/css/login.css" />
 <script>
 	function checkLogin(){
-		alert("aaa");
 		document.forms[0].submit();
 	}
 
