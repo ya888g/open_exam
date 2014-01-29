@@ -1,5 +1,6 @@
 package com.eln365.exam.service.questionBank;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -20,26 +21,45 @@ public class BankTypeService {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-	
-	public List<BankType> queryBankTypeList(){
-		List<BankType> bankTypeList = jdbcTemplate.query(" select * from questiontype order typeStr ", new Object[]{}, new BeanPropertyRowMapper<BankType>(BankType.class));
+
+	public List<BankType> queryBankTypeList() {
+		List<BankType> bankTypeList = jdbcTemplate.query(
+				" select * from questiontype order typeStr ", new Object[] {},
+				new BeanPropertyRowMapper<BankType>(BankType.class));
 		return bankTypeList;
 	}
-	
-	public String generateToTree(){
+
+	public String generateToTree() {
 		List<BankType> bankTypeList = queryBankTypeList();
-		BankType bankType =bankTypeList.get(0);
-		Tree tree = new Tree();
-		tree.setId(bankType.getId());
-		tree.setName(bankType.getName());
-		generateTree(tree, bankType.getTypeStr().split("\\.").length, bankTypeList);
-		
+		List<Tree> treeList = new ArrayList<Tree>();
+		Tree tree = null;
+		for(BankType bankType:bankTypeList){
+			tree = new Tree();
+			tree.setId(id);
+			tree.setName(name);
+			tree.addChild(ct);
+			tree.setChildren(children);
+		}
+
 		return null;
 	}
-	
-	public void generateTree(Tree tree,int strLength,List<BankType> bankTypeList){
-		
+
+	public List<Tree> getChildList(List<BankType> bankTypeList, BankType parentBankType) {
+		List<Tree> childList = new ArrayList<Tree>();
+		String[] parentTypeStr = parentBankType.getTypeStr().split("\\.");
+		String[] currentTypeStr = null;
+		for (BankType bankType : bankTypeList) {
+			currentTypeStr = bankType.getTypeStr().split("\\.");
+			if(parentTypeStr.length>=currentTypeStr.length)
+				break;
+			if(currentTypeStr[currentTypeStr.length-2]==parentTypeStr[parentTypeStr.length-1]){
+				Tree tree = new Tree();
+				tree.setId(id);
+				tree.setName(name);
+				
+			}
+				childList.add(bankType);
+		}
 	}
-	
-	
+
 }
