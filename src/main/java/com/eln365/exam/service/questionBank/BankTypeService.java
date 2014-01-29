@@ -1,6 +1,12 @@
 package com.eln365.exam.service.questionBank;
 
+import java.util.List;
+
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.eln365.exam.model.Tree;
+import com.eln365.exam.model.QuestionBank.BankType;
 
 /**
  * 
@@ -15,6 +21,25 @@ public class BankTypeService {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
+	public List<BankType> queryBankTypeList(){
+		List<BankType> bankTypeList = jdbcTemplate.query(" select * from questiontype order typeStr ", new Object[]{}, new BeanPropertyRowMapper<BankType>(BankType.class));
+		return bankTypeList;
+	}
+	
+	public String generateToTree(){
+		List<BankType> bankTypeList = queryBankTypeList();
+		BankType bankType =bankTypeList.get(0);
+		Tree tree = new Tree();
+		tree.setId(bankType.getId());
+		tree.setName(bankType.getName());
+		generateTree(tree, bankType.getTypeStr().split("\\.").length, bankTypeList);
+		
+		return null;
+	}
+	
+	public void generateTree(Tree tree,int strLength,List<BankType> bankTypeList){
+		
+	}
 	
 	
 }

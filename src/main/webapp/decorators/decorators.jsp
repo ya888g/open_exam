@@ -7,9 +7,13 @@
 <title><decorator:title default="监控首页" /></title>
 <head>
 <link rel="stylesheet" href="${ctxPath}/resources/css/common.css" />
+<link rel="stylesheet" href="${ctxPath}/resources/ztree/zTreeStyle.css" />
+
 <script src="${ctxPath}/resources/js/jquery-1.8.3.js"></script>
 <script src="${ctxPath}/resources/js/jquery.cookie.min.js"></script>
+<script src="${ctxPath}/resources/ztree/jquery.ztree.core-3.5.min.js"></script>
 
+<decorator:head />
 </head>
 
 <body>
@@ -27,10 +31,14 @@
 				<li class="seperate">&nbsp;</li>
 				<li class="rightround"></li>
 			</ul>
+			<div class="navdescribe">
+          		<div class="describetext" id="navDescribeBg"><div class="textitem" id="navDescribe"></div></div>
+			</div>
 		</div>
-	</div>
+	</div>	
+	
 	<decorator:body />
-	<!--  <div style="margin:auto;margin: 0px;" align="center">监控平台 copyright：2013</div> -->
+	<div style="position: absolute;bottom: 1%;left:45%" ><a href="http://eln365.com" target="_blank">在线教育平台</a>  copyright：2008 - 2014  </div>
 </body>
 <script type="text/javascript">
 	function showNavDescribe(menuId,url) {

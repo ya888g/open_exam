@@ -1,5 +1,11 @@
 package com.eln365.exam.web.questionBank;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sf.json.JSONArray;
+
+import com.eln365.exam.model.Tree;
 import com.eln365.exam.service.questionBank.BankTypeService;
 import com.eln365.exam.web.BaseAction;
 
@@ -23,7 +29,27 @@ public class BankTypeAction extends BaseAction {
 	}
 
 	public String query() {
-
 		return "bankType";
+	}
+	
+	
+	public void generateTree(){
+		List<Tree> treeList = new ArrayList<Tree>();
+		
+		Tree tree1 = new Tree();
+		
+		tree1.setId("1");
+		tree1.setName("test1");
+		tree1.setIsDir(true);
+		
+		Tree tree2 = new Tree();
+		tree2.setId("2");
+		tree2.setName("test2");
+		tree2.addChild(tree1);
+		treeList.add(tree2);
+		
+		JSONArray json = JSONArray.fromObject(treeList);
+		
+		writeToRespone(json.toString());
 	}
 }

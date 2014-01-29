@@ -3,6 +3,7 @@
 		<pattern>/common/*</pattern>
 		<pattern>/resources/*</pattern>
 		<pattern>*login.jsp</pattern>
+		<pattern>*.jhtml</pattern>
 	</excludes>
 	<decorator name="main" page="decorators.jsp">
 		<pattern>*</pattern>
