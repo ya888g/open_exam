@@ -1,12 +1,12 @@
 package com.eln365.exam.web.questionBank;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
-import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
-import com.eln365.exam.model.Tree;
+import com.eln365.exam.model.QuestionBank.BankType;
 import com.eln365.exam.service.questionBank.BankTypeService;
+import com.eln365.exam.utils.ExamUtils;
 import com.eln365.exam.web.BaseAction;
 
 /**
@@ -17,8 +17,25 @@ import com.eln365.exam.web.BaseAction;
  */
 public class BankTypeAction extends BaseAction {
 	private static final long serialVersionUID = 153184035173927370L;
-
+	private BankType bankType;
 	private BankTypeService bankTypeService;
+	private String parentId;
+
+	public String getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
+
+	public BankType getBankType() {
+		return bankType;
+	}
+
+	public void setBankType(BankType bankType) {
+		this.bankType = bankType;
+	}
 
 	public BankTypeService getBankTypeService() {
 		return bankTypeService;
@@ -31,25 +48,31 @@ public class BankTypeAction extends BaseAction {
 	public String query() {
 		return "bankType";
 	}
-	
-	
-	public void generateTree(){
-		List<Tree> treeList = new ArrayList<Tree>();
-		
-		Tree tree1 = new Tree();
-		
-		tree1.setId("1");
-		tree1.setName("test1");
-		tree1.setIsDir(true);
-		
-		Tree tree2 = new Tree();
-		tree2.setId("2");
-		tree2.setName("test2");
-		tree2.addChild(tree1);
-		treeList.add(tree2);
-		
-		JSONArray json = JSONArray.fromObject(treeList);
-		
-		writeToRespone(json.toString());
+
+	public void generateTree() {
+
+		writeToRespone(bankTypeService.generateToTree());
 	}
+
+	public void queryById() {
+		String json = JSONObject.fromObject(bankTypeService.queryById(bankType.getId())).toString();
+		writeToRespone(json);
+	}
+
+	public void editGo() {
+		if (StringUtils.isEmpty(bankType.getId())) {
+			BankType parentBankType = bankTypeService.queryById(parentId);
+			bankType.setId(ExamUtils.getUUID());
+			bankType.setTypeStr(appengTreeLeafStr(parentBankType.getTypeStr(), bankType.getId()));
+			bankTypeService.insert(bankType);
+		} else {
+			BankType bankTypeDB = bankTypeService.queryById(bankType.getId());
+			bankType.setTypeStr(bankTypeDB.getTypeStr());
+			bankTypeService.update(bankType);
+		}
+
+		writeToRespone(generateSingleJson(null));
+
+	}
+
 }

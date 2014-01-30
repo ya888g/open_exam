@@ -6,6 +6,9 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
@@ -64,6 +67,18 @@ public class BaseAction extends ActionSupport implements ServletRequestAware, Se
 				out.close();
 		}
 
+	}
+
+	public String appengTreeLeafStr(String parentStr, String currentId) {
+		return parentStr + currentId + ".";
+	}
+
+	public String generateSingleJson(String str) {
+		if (StringUtils.isEmpty(str))
+			str = "success";
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", str);
+		return jsonObject.toString();
 	}
 
 	// public Map getSession() {
