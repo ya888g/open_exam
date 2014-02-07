@@ -18,13 +18,28 @@
 	};
 
 	function onClick(event, treeId, treeNode, clickFlag) {
-		$("#parentId").val(treeNode.id);
-		$("#viewno").html(treeNode.no);
-		$("#viewname").html(treeNode.name);
-
-		$("#edit").css("display", "none");
-		$("#view").css("display", "block");
-		$("#opt").css("display", "block");
+		view(treeNode.id);
+	}
+	
+	function view(id){
+		var url = __ctxPath + "/bankTypequeryById.jhtml?bankType.id=" +id;
+		$.ajax({
+			type : "POST",
+			url : url,
+			async : false,
+			data : "",
+			dataType : "json",
+			success : function(msg) {
+				$("#parentId").val(msg.id);
+				$("#viewno").html(msg.no);
+				$("#viewname").html(msg.name);
+				
+				$("#edit").css("display", "none");
+				$("#view").css("display", "block");
+				$("#opt").css("display", "block");
+			}
+		});
+		
 	}
 
 	//var test1 = {"children":[{"children":[],"id":"2","isDir":false,"name":"test2","open":false},{"children":[{"children":[],"id":"31","isDir":false,"name":"test31","open":false}],"id":"3","isDir":false,"name":"test3","open":false}],"id":"1","isDir":false,"name":"test1","open":false}
@@ -82,7 +97,9 @@
 			data : "",
 			dataType : "json",
 			success : function(msg) {
-				alert(msg.result);
+				var result = msg.result;
+				alert(result.split(",,")[1]);
+				view(result.split(",,")[0]);
 			}
 		});
 		

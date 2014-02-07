@@ -80,6 +80,11 @@ public class BaseAction extends ActionSupport implements ServletRequestAware, Se
 		jsonObject.put("result", str);
 		return jsonObject.toString();
 	}
+	
+	public String generateJson(Object object){
+		String json = JSONObject.fromObject(object).toString();
+		return json;
+	}
 
 	// public Map getSession() {
 	// return session;

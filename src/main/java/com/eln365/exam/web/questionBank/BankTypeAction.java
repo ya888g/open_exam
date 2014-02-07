@@ -71,7 +71,7 @@ public class BankTypeAction extends BaseAction {
 			bankTypeService.update(bankType);
 		}
 
-		writeToRespone(generateSingleJson(null));
+		writeToRespone(generateSingleJson(bankType.getId()+",,success"));
 
 	}
 
