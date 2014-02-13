@@ -6,6 +6,7 @@
 <struts>
 	<constant name="struts.objectFactory" value="spring" />
 	<constant name="struts.action.extension" value="jhtml,do" />
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
 	<package name="default" extends="struts-default">
 		<global-results>
 			<result name="login" type="redirect">/pages/login.jsp</result>
@@ -26,8 +27,7 @@
 
 
 	</package>
-
-	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	
 
 
 </struts>  

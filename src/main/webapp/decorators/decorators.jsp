@@ -12,6 +12,8 @@
 <script src="${ctxPath}/resources/js/jquery-1.8.3.js"></script>
 <script src="${ctxPath}/resources/js/jquery.cookie.min.js"></script>
 <script src="${ctxPath}/resources/ztree/jquery.ztree.core-3.5.min.js"></script>
+<script src="${ctxPath}/resources/js/common.js"></script>
+
 
 <decorator:head />
 </head>

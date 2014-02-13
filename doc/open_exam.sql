@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50051
 File Encoding         : 65001
 
-Date: 2014-01-30 15:00:42
+Date: 2014-02-13 16:20:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,11 +29,15 @@ CREATE TABLE `questiontype` (
 -- ----------------------------
 -- Records of questiontype
 -- ----------------------------
-INSERT INTO `questiontype` VALUES ('1', '1', 'test1', '1.');
-INSERT INTO `questiontype` VALUES ('2', '2', 'test2', '1.2.');
-INSERT INTO `questiontype` VALUES ('2e8281cb36454889a9ef46778ba875dd', '5', 'test33', '1.3.2e8281cb36454889a9ef46778ba875dd.');
-INSERT INTO `questiontype` VALUES ('3', '3', 'test3', '1.3.');
-INSERT INTO `questiontype` VALUES ('4', '4', 'test4', '1.2.4.');
+INSERT INTO `questiontype` VALUES ('1', '1', '题库', '1.');
+INSERT INTO `questiontype` VALUES ('3e8759a4144740ce9c79fa63966e2518', '140213161850', '客车', '1.fe58b82658d94b7f8847c4d4f9bfab4f.3e8759a4144740ce9c79fa63966e2518.');
+INSERT INTO `questiontype` VALUES ('5a6d231246d04b848b07a837c3cfeef3', '140213161930', '客车', '1.dd2939c84782495d8f33718b16caf1d8.5a6d231246d04b848b07a837c3cfeef3.');
+INSERT INTO `questiontype` VALUES ('80b695e147e84a3cb57a9ea44c8f2d86', '140213161822', '小车', '1.fe58b82658d94b7f8847c4d4f9bfab4f.80b695e147e84a3cb57a9ea44c8f2d86.');
+INSERT INTO `questiontype` VALUES ('96a8325cbcfa4d01aa9d70b5762a1bfc', '140213161905', '小车', '1.dd2939c84782495d8f33718b16caf1d8.96a8325cbcfa4d01aa9d70b5762a1bfc.');
+INSERT INTO `questiontype` VALUES ('b99f25525255425fbb71a1e591d4b734', '140213161913', '货车', '1.dd2939c84782495d8f33718b16caf1d8.b99f25525255425fbb71a1e591d4b734.');
+INSERT INTO `questiontype` VALUES ('c6a05117cc5146e9b15edf3fd6baa0cf', '140213161836', '货车', '1.fe58b82658d94b7f8847c4d4f9bfab4f.c6a05117cc5146e9b15edf3fd6baa0cf.');
+INSERT INTO `questiontype` VALUES ('dd2939c84782495d8f33718b16caf1d8', '140213160145', '科目四', '1.dd2939c84782495d8f33718b16caf1d8.');
+INSERT INTO `questiontype` VALUES ('fe58b82658d94b7f8847c4d4f9bfab4f', '140213160129', '科目一', '1.fe58b82658d94b7f8847c4d4f9bfab4f.');
 
 -- ----------------------------
 -- Table structure for `user`

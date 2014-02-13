@@ -27,7 +27,7 @@ public class BankTypeService {
 	}
 
 	public List<BankType> queryBankTypeList() {
-		List<BankType> bankTypeList = jdbcTemplate.query(" select * from questiontype order by typeStr ", new Object[] {}, new BeanPropertyRowMapper<BankType>(BankType.class));
+		List<BankType> bankTypeList = jdbcTemplate.query(" select * from questiontype order by LENGTH(typeStr),no ", new Object[] {}, new BeanPropertyRowMapper<BankType>(BankType.class));
 		return bankTypeList;
 	}
 
@@ -47,6 +47,12 @@ public class BankTypeService {
 		sql.append(" update questiontype set no=? ,name=?,typeStr=? where id= ? ");
 		jdbcTemplate.update(sql.toString(), bankType.getNo(), bankType.getName(), bankType.getTypeStr(), bankType.getId());
 	}
+	
+	public void delete(String id){
+		StringBuilder sql = new StringBuilder();
+		sql.append(" delete from questiontype where id= ? ");
+		jdbcTemplate.update(sql.toString(), id);
+	}
 
 	public String generateToTree() {
 		List<BankType> bankTypeList = queryBankTypeList();
@@ -56,6 +62,7 @@ public class BankTypeService {
 		Tree treeFirst = new Tree();
 		treeFirst.setId(bankType.getId());
 		treeFirst.setName(bankType.getName());
+		treeFirst.setOpen(true);
 		stack.push(treeFirst);
 		while (!stack.isEmpty()) {
 			Tree tree = stack.pop();
@@ -63,7 +70,7 @@ public class BankTypeService {
 			tree.setChildren(childTreeList);
 			int childListSize = childTreeList.size();
 			for (int i = 0; i < childListSize; i++) {
-				stack.push(childTreeList.get(childListSize - i - 1));
+				stack.push(childTreeList.get(i));
 			}
 		}
 
@@ -80,6 +87,7 @@ public class BankTypeService {
 				Tree tree = new Tree();
 				tree.setId(bankType.getId());
 				tree.setName(bankType.getName());
+				tree.setOpen(true);
 				childList.add(tree);
 			}
 

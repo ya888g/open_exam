@@ -1,8 +1,11 @@
 package com.eln365.exam.web.questionBank;
 
-import org.apache.commons.lang3.StringUtils;
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 import net.sf.json.JSONObject;
+
+import org.apache.commons.lang3.StringUtils;
 
 import com.eln365.exam.model.QuestionBank.BankType;
 import com.eln365.exam.service.questionBank.BankTypeService;
@@ -60,6 +63,7 @@ public class BankTypeAction extends BaseAction {
 	}
 
 	public void editGo() {
+		
 		if (StringUtils.isEmpty(bankType.getId())) {
 			BankType parentBankType = bankTypeService.queryById(parentId);
 			bankType.setId(ExamUtils.getUUID());
@@ -71,8 +75,15 @@ public class BankTypeAction extends BaseAction {
 			bankTypeService.update(bankType);
 		}
 
-		writeToRespone(generateSingleJson(bankType.getId()+",,success"));
+		writeToRespone(generateSingleJson("success"+",,"+bankType.getId()+",,"+bankType.getName()));
 
+	}
+	
+	public void delete(){
+		
+		bankTypeService.delete(bankType.getId());
+		
+		writeToRespone(generateSingleJson(null));
 	}
 
 }
