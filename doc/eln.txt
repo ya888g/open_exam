@@ -89,5 +89,8 @@ http://www.helloweba.com/view-blog-216.html
 http://bbs.shendu.com/thread-2081875-1-1.html
 
 
-
+动感UI菜单，修改版本可参看
+http://www.codefans.net/jscss/code/4414.shtml
+jquery ui buttonset：
+http://www.2cto.com/kf/201303/197843.html
 

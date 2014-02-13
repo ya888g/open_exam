@@ -146,8 +146,8 @@
 </head>
 <body>
 	<div>
-		<div
-			style="float: left; width: 160; height: 100%; border: 1px #ccc solid">
+		<div style="float: left; width: 160; height: 100%; border: 1px #ccc solid">
+		
 		</div>
 		<div style="float: left; margin-top: 10px;">
 			<div style="float: left; width: 140px; height: 100%;">
