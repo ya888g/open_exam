@@ -1,0 +1,4 @@
+#verticalMenu{background-color: #FFFFFF;}
+#verticalMenu li.listheader{border-right:1px #ccc solid;border:1px #ccc solid;height: 20px;padding-top: 5px;}
+#verticalMenu li.listitem{border-right:1px #ccc solid;border-bottom:1px #ccc solid;border-left:1px #ccc solid;height: 20px;padding-top: 5px;}
+#verticalMenu li.listitemcolor{background-color: red;}

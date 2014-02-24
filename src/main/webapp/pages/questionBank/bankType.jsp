@@ -45,6 +45,7 @@
 	//var test1 = {"children":[{"children":[],"id":"2","isDir":false,"name":"test2","open":false},{"children":[{"children":[],"id":"31","isDir":false,"name":"test31","open":false}],"id":"3","isDir":false,"name":"test3","open":false}],"id":"1","isDir":false,"name":"test1","open":false}
 
 	$(document).ready(function() {
+		 $( "#menu" ).menu();
 		initTree();
 	});
 	
@@ -142,12 +143,27 @@
 			}
 		});
 	}
+	
+	function testmenu(){
+		alert("aaa");
+	}
+	
 </script>
 </head>
 <body>
 	<div>
-		<div style="float: left; width: 160; height: 100%; border: 1px #ccc solid">
-		
+		<div style="float: left; width: 160; height: 100%;padding-top: 2px;padding-left: 2px;">
+			<!-- <ul id="menu">
+				<li><a href="#" onclick="test();">Ada</a></li>
+	  			<li><a href="#" onclick="test();" >Adamsville</a></li>
+	  			<li><a href="#" onclick="test();">Addyston</a></li>
+			</ul> -->
+			<ul id="verticalMenu">
+				<li class="listheader listitemcolor" ><a href="#" onclick="testmenu();">Ada</a></li>
+	  			<li class="listitem"><a href="#" onclick="testmenu();" >Adamsville</a></li>
+	  			<li class="listitem"><a href="#" onclick="testmenu();">Addyston</a></li>
+			</ul>
+			
 		</div>
 		<div style="float: left; margin-top: 10px;">
 			<div style="float: left; width: 140px; height: 100%;">

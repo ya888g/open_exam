@@ -7,13 +7,15 @@
 <title><decorator:title default="监控首页" /></title>
 <head>
 <link rel="stylesheet" href="${ctxPath}/resources/css/common.css" />
+<link rel="stylesheet" href="${ctxPath}/resources/css/custom.css" />
 <link rel="stylesheet" href="${ctxPath}/resources/ztree/zTreeStyle.css" />
+<link rel="stylesheet" href="${ctxPath}/resources/jqueryui/jquery-ui-1.9.2.custom.css" />
 
 <script src="${ctxPath}/resources/js/jquery-1.8.3.js"></script>
 <script src="${ctxPath}/resources/js/jquery.cookie.min.js"></script>
 <script src="${ctxPath}/resources/ztree/jquery.ztree.core-3.5.min.js"></script>
 <script src="${ctxPath}/resources/js/common.js"></script>
-
+<script src="${ctxPath}/resources/jqueryui/jquery-ui-1.9.2.custom.js"></script>
 
 <decorator:head />
 </head>
