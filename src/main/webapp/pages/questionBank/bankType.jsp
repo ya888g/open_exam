@@ -145,23 +145,25 @@
 	}
 	
 	function testmenu(){
-		alert("aaa");
+		
+		initTree();
 	}
 	
 </script>
 </head>
 <body>
 	<div>
-		<div style="float: left; width: 160; height: 100%;padding-top: 2px;padding-left: 2px;">
+		<div style="float: left; width: 160; height: 110px;margin-top: 5px;margin-left:3px; padding-left: 2px;border: 1px #ccc solid;">
 			<!-- <ul id="menu">
 				<li><a href="#" onclick="test();">Ada</a></li>
 	  			<li><a href="#" onclick="test();" >Adamsville</a></li>
 	  			<li><a href="#" onclick="test();">Addyston</a></li>
 			</ul> -->
 			<ul id="verticalMenu">
-				<li class="listheader listitemcolor" ><a href="#" onclick="testmenu();">Ada</a></li>
-	  			<li class="listitem"><a href="#" onclick="testmenu();" >Adamsville</a></li>
-	  			<li class="listitem"><a href="#" onclick="testmenu();">Addyston</a></li>
+				<li ><a href="#" onclick="testmenu();">题库类型</a></li>
+	  			<li ><a href="#" onclick="testmenu();" >设置题库</a></li>
+	  			<li ><a href="#" onclick="testmenu();">设置试题</a></li>
+	  			<li class="current"><a href="#" onclick="testmenu();">试题导入</a></li>
 			</ul>
 			
 		</div>
