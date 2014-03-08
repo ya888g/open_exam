@@ -149,31 +149,38 @@
 		initTree();
 	}
 	
+	function selectMenu(currentMenuId){
+		$($("#verticalMenu").children("li")).each(function (){
+			$(this).removeClass("current");
+		});
+		$("#"+currentMenuId).addClass("current");
+		initTree();
+	}
+	
+	
 </script>
 </head>
 <body>
 	<div>
-		<div style="float: left; width: 160; height: 110px;margin-top: 5px;margin-left:3px; padding-left: 2px;border: 1px #ccc solid;">
-			<!-- <ul id="menu">
-				<li><a href="#" onclick="test();">Ada</a></li>
-	  			<li><a href="#" onclick="test();" >Adamsville</a></li>
-	  			<li><a href="#" onclick="test();">Addyston</a></li>
-			</ul> -->
+		<div style="float:left; width: 12%; margin-top: 5px;margin-left:3px; padding-left: 2px;">
+			<div class="easyui-panel" title="菜单">
 			<ul id="verticalMenu">
-				<li ><a href="#" onclick="testmenu();">题库类型</a></li>
-	  			<li ><a href="#" onclick="testmenu();" >设置题库</a></li>
-	  			<li ><a href="#" onclick="testmenu();">设置试题</a></li>
-	  			<li class="current"><a href="#" onclick="testmenu();">试题导入</a></li>
+				<li id="bankTypeId" class="current"><a href="#" onclick="selectMenu('bankTypeId');">题库类型</a></li>
+	  			<li id="bankSettingId"><a href="#" onclick="selectMenu('bankSettingId');" >设置题库</a></li>
+	  			<li id="questionSettingId"><a href="#" onclick="selectMenu('questionSettingId');">设置试题</a></li>
+	  			<li id="questionImportId"><a href="#" onclick="selectMenu('questionImportId');">试题导入</a></li>
 			</ul>
-			
+			</div>
 		</div>
-		<div style="float: left; margin-top: 10px;">
-			<div style="float: left; width: 140px; height: 100%;">
+		<div style="float: right; margin-top: 10px;width: 83%;margin-right: 10px;">
+			<div style="float: left; width: 140px;">
 				<ul id="questionBankTree" class="ztree"></ul>
 			</div>
-
-			<div style="float: left;">
-				<table id="view">
+			<div style="float: left;width: 83%;height: 50%">
+			
+			<div class="easyui-panel" title="题库管理-->题库类型"  fit="true" >
+				<div style="padding:10px 0 10px 60px">
+					<table id="view" style="font-size: 12px;line-height: 30px;">
 					<tr>
 						<td>题库编号:</td>
 						<td id="viewno"></td>
@@ -187,7 +194,7 @@
 					<input type="hidden" id="parentId" name="parentId"> 
 					<input type="hidden" id="id" name="bankType.id">
 				<div id="edit">
-						<table>
+						<table style="font-size: 12px;line-height: 30px;">
 							<tr>
 								<td>题库编号:</td>
 								<td><input type="text" id="no" name="bankType.no" size="20" readonly="readonly">
@@ -207,7 +214,7 @@
 						</table>
 					
 				</div>
-				<table id="opt">
+				<table id="opt" style="padding-top: 10px;">
 					<tr>
 						<td colspan="2">
 							<input type="button" name="add"	value="新增子类别" onclick="edit(1);">
@@ -216,6 +223,13 @@
 					</tr>
 				</table>
 				</form>
+				
+				
+				</div>
+			</div>
+			
+			
+				
 			</div>
 
 		</div>

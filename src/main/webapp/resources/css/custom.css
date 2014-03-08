@@ -1,3 +1,3 @@
-#verticalMenu{margin-left:5px; marbackground-color: #FFFFFF;font-size: 14px;font-weight: 700;}
+#verticalMenu{margin-left:5px; marbackground-color: #FFFFFF;font-size: 12px;font-weight: 700;}
 #verticalMenu li{border-bottom:1px #ccc dotted;height: 20px;padding-top: 5px;}
 #verticalMenu li.current a{color: #FF0000;}
