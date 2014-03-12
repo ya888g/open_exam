@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
+<%@ include file="/pages/common/taglibs.jsp"%>
 <html>
 <head>
 <script type="text/javascript">
@@ -145,24 +146,15 @@
 	}
 	
 	function testmenu(){
-		
 		initTree();
 	}
-	
-	function selectMenu(currentMenuId){
-		$($("#verticalMenu").children("li")).each(function (){
-			$(this).removeClass("current");
-		});
-		$("#"+currentMenuId).addClass("current");
-		initTree();
-	}
-	
 	
 </script>
 </head>
 <body>
 	<div>
-		<div style="float:left; width: 12%; margin-top: 5px;margin-left:3px; padding-left: 2px;">
+		<!--
+		 <div style="float:left; width: 12%; margin-top: 5px;margin-left:3px; padding-left: 2px;">
 			<div class="easyui-panel" title="菜单">
 			<ul id="verticalMenu">
 				<li id="bankTypeId" class="current"><a href="#" onclick="selectMenu('bankTypeId');">题库类型</a></li>
@@ -172,7 +164,9 @@
 			</ul>
 			</div>
 		</div>
-		<div style="float: right; margin-top: 10px;width: 83%;margin-right: 10px;">
+		 -->
+		<%@ include file="/pages/common/menuLeft.jsp" %>
+		<div style="float: right; margin-top: 5px;width: 83%;margin-right: 10px;">
 			<div style="float: left; width: 140px;">
 				<ul id="questionBankTree" class="ztree"></ul>
 			</div>
@@ -218,7 +212,7 @@
 					<tr>
 						<td colspan="2">
 							<input type="button" name="add"	value="新增子类别" onclick="edit(1);">
-							<input type="button" name="update" value="修改本类别" onclick="edit(2);"> 
+							<input type="button" name="update" value="修改本类别" onclick="edit(2);">
 							<input type="button" name="delete" value="删除本类别" onclick="questionTypedelete();"></td>
 					</tr>
 				</table>
@@ -233,10 +227,9 @@
 			</div>
 
 		</div>
-
 	</div>
-
-
+<script type="text/javascript">
+	selectMenu('bankTypeId');
+</script>
 </body>
-
 </html>

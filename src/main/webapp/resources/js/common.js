@@ -31,3 +31,12 @@ function getNowString(){
 	var today=year +""+ month +""+day+""+hour+""+minutes+""+seconds;
 	return today;
 }
+
+function selectMenu(currentMenuId,targetJsp){
+	if(targetJsp)
+		window.location.href=targetJsp;
+	$($("#verticalMenu").children("li")).each(function (){
+		$(this).removeClass("current");
+	});
+	$("#"+currentMenuId).addClass("current");
+}

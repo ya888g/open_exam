@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.eln365.exam.model.Tree;
 import com.eln365.exam.model.QuestionBank.BankType;
-import com.eln365.exam.utils.ExamUtils;
 
 /**
  * 
