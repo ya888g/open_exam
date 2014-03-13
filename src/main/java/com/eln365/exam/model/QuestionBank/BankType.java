@@ -1,4 +1,4 @@
-package com.eln365.exam.model.QuestionBank;
+package com.eln365.exam.model.questionBank;
 
 /**
  * 

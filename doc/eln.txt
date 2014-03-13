@@ -94,3 +94,5 @@ http://www.codefans.net/jscss/code/4414.shtml
 jquery ui buttonset：
 http://www.2cto.com/kf/201303/197843.html
 
+easyui 分页
+http://www.cnblogs.com/huozhicheng/archive/2011/09/27/2193605.html

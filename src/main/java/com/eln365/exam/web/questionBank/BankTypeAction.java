@@ -7,7 +7,7 @@ import net.sf.json.JSONObject;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.eln365.exam.model.QuestionBank.BankType;
+import com.eln365.exam.model.questionBank.BankType;
 import com.eln365.exam.service.questionBank.BankTypeService;
 import com.eln365.exam.utils.ExamUtils;
 import com.eln365.exam.web.BaseAction;
