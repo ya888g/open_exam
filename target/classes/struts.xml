@@ -23,6 +23,10 @@
         <action name="questionBank*" class="questionBankAction" method="{1}">
             <result name="questionBankList">/pages/questionBank/questionBankList.jsp</result>
         </action>
+        <action name="questionItem*" class="questionItemAction" method="{1}">
+            <result name="questionItemList">/pages/questionBank/questionItemList.jsp</result>
+        </action>
+        
         
         <action name="exam*" class="examAction" method="{1}">
             <result name="query">/pages/exam/exam.jsp</result>

@@ -172,7 +172,7 @@ function initTree(){
 		<ul id="questionBankTree" class="ztree"></ul>
 	</div>
 	<div style="float: left;width: 80%;height: 60%">
-	<table id="list_data" title="考试管理-->题库列表" >
+	<table id="list_data" title="题库管理-->题库列表" >
 	    <thead>
 	        <tr>
 	            <th data-options="field:'no'" >试题编号</th>
