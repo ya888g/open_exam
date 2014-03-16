@@ -15,11 +15,20 @@ public class QuestionItem {
 	private String questionBank;
 	private Double score;
 	private Integer difficulty;
-	private String title;
+	private String content;
+	private String answer;
 	private Integer status;
 	private Date createTime;
 	private Date updateTime;
-
+	
+	private String options;
+	private String answerA;
+	private String answerB;
+	private String answerC;
+	private String answerD;
+	private String answerE;
+	private String answerF;
+	
 	public String getId() {
 		return id;
 	}
@@ -68,12 +77,13 @@ public class QuestionItem {
 		this.difficulty = difficulty;
 	}
 
-	public String getTitle() {
-		return title;
+
+	public String getContent() {
+		return content;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public Integer getStatus() {
@@ -100,4 +110,70 @@ public class QuestionItem {
 		this.updateTime = updateTime;
 	}
 
+	public String getOptions() {
+		return options;
+	}
+
+	public void setOptions(String options) {
+		this.options = options;
+	}
+
+	public String getAnswerA() {
+		return answerA;
+	}
+
+	public void setAnswerA(String answerA) {
+		this.answerA = answerA;
+	}
+
+	public String getAnswerB() {
+		return answerB;
+	}
+
+	public void setAnswerB(String answerB) {
+		this.answerB = answerB;
+	}
+
+	public String getAnswerC() {
+		return answerC;
+	}
+
+	public void setAnswerC(String answerC) {
+		this.answerC = answerC;
+	}
+
+	public String getAnswerD() {
+		return answerD;
+	}
+
+	public void setAnswerD(String answerD) {
+		this.answerD = answerD;
+	}
+
+	public String getAnswerE() {
+		return answerE;
+	}
+
+	public void setAnswerE(String answerE) {
+		this.answerE = answerE;
+	}
+
+	public String getAnswerF() {
+		return answerF;
+	}
+
+	public void setAnswerF(String answerF) {
+		this.answerF = answerF;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	
+	
 }

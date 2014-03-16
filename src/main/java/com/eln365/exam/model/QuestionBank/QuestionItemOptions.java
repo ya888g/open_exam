@@ -12,6 +12,7 @@ public class QuestionItemOptions {
 	private String id;
 	private String options;
 	private String optionsContent;
+	private String itemId;
 	private Date createTime;
 	private Date updateTime;
 	public String getId() {
@@ -43,6 +44,12 @@ public class QuestionItemOptions {
 	}
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+	public String getItemId() {
+		return itemId;
+	}
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
 	}
 	
 }

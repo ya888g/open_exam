@@ -5,13 +5,15 @@ package com.eln365.exam.model;
  * 类说明
  */
 public class EasyUICombobox {
-	private String id;
+	private String value;
 	private String text;
-	public String getId() {
-		return id;
+	
+	
+	public String getValue() {
+		return value;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setValue(String value) {
+		this.value = value;
 	}
 	public String getText() {
 		return text;

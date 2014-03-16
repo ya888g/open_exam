@@ -90,9 +90,16 @@ public class BaseAction extends ActionSupport implements ServletRequestAware, Se
 		return json;
 	}
 	
-	public String queryEasyUICombobox(){
-		String questionItem = "[{\"value\":\"1\",\"text\":\"单选题\"},{\"value\":\"2\",\"text\":\"多选题\"}]";
-		return questionItem;
+	public String queryEasyUICombobox(String comboboxPara){
+		String easyUIComboboxStr = "";
+		if(StringUtils.equals(comboboxPara, "questionItemType")){
+			easyUIComboboxStr="[{\"value\":\"1\",\"text\":\"单选题\"},{\"value\":\"2\",\"text\":\"多选题\"},{\"value\":\"3\",\"text\":\"判断题\"}]";
+		}else if(StringUtils.equals(comboboxPara, "questionItemCount")){
+			easyUIComboboxStr="[{\"value\":\"2\",\"text\":\"2\"},{\"value\":\"3\",\"text\":\"3\"},{\"value\":\"4\",\"text\":\"4\"},{\"value\":\"5\",\"text\":\"5\"},{\"value\":\"6\",\"text\":\"6\"}]";
+		}else if(StringUtils.equals(comboboxPara, "difficulty")){
+			easyUIComboboxStr="[{\"value\":\"1\",\"text\":\"简单\"},{\"value\":\"2\",\"text\":\"中等\"},{\"value\":\"3\",\"text\":\"难\"}]";
+		}
+		return easyUIComboboxStr;
 	}
 	
 

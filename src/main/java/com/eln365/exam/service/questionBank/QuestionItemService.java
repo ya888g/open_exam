@@ -3,10 +3,12 @@ package com.eln365.exam.service.questionBank;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.eln365.exam.model.questionBank.QuestionItem;
+import com.eln365.exam.model.questionBank.QuestionItemOptions;
 
 /**
  * 
@@ -46,6 +48,70 @@ public class QuestionItemService {
 		paraList.add(rows);
 
 		return jdbcTemplate.query(sql.toString(), paraList.toArray(), new BeanPropertyRowMapper<QuestionItem>(QuestionItem.class));
+	}
+	
+	public void insertQuestionItem(QuestionItem qi,List<QuestionItemOptions> questionItemOptionsList) {
+		StringBuilder sql = new StringBuilder();
+		sql.append(" insert into questionitem values( ?,?,?,?,?,?,?,?,?,?,? ) ");
+		jdbcTemplate.update(sql.toString(), qi.getId(), qi.getType(), qi.getCount(), qi.getQuestionBank(), qi.getScore()
+				,qi.getDifficulty(),qi.getContent(),qi.getOptions(),qi.getStatus(),qi.getCreateTime(),qi.getUpdateTime());
+		
+		StringBuilder optionsSql= new StringBuilder();
+		optionsSql.append(" insert into questionitemoptions values( ?,?,?,?,?,? ) ");
+		for(QuestionItemOptions qio:questionItemOptionsList){
+			jdbcTemplate.update(optionsSql.toString(),qio.getId(),qio.getOptions(),qio.getOptionsContent(),qio.getItemId(),qio.getCreateTime(),qio.getUpdateTime());
+		}
+		
+	}
+	
+	public void updateQuestionItem(QuestionItem qi,List<QuestionItemOptions> questionItemOptionsList){
+		StringBuilder updatesql = new StringBuilder();
+		updatesql.append(" update questionitem set type =? ,count=? ,questionBank=? ,score=? ,difficulty=? ,content=? ,answer =? ,updateTime=? where id=? ");
+		jdbcTemplate.update(updatesql.toString(), qi.getType(), qi.getCount(), qi.getQuestionBank(), qi.getScore()
+				,qi.getDifficulty(),qi.getContent(),qi.getOptions(),qi.getUpdateTime(),qi.getId());
+		
+		jdbcTemplate.update(" delete from questionitemoptions where itemId=? ",qi.getId());
+		
+		StringBuilder optionsSql= new StringBuilder();
+		optionsSql.append(" insert into questionitemoptions values( ?,?,?,?,?,? ) ");
+		for(QuestionItemOptions qio:questionItemOptionsList){
+			jdbcTemplate.update(optionsSql.toString(),qio.getId(),qio.getOptions(),qio.getOptionsContent(),qio.getItemId(),qio.getCreateTime(),qio.getUpdateTime());
+		}
+		
+	}
+	
+	public void deleteItem(String id){
+		jdbcTemplate.update(" delete from questionitemoptions where itemId=? ",id);
+		jdbcTemplate.update(" delete from questionitem where id=? ",id);
+	}
+	
+	public QuestionItem queryById(String id) {
+		QuestionItem questionItem = null;
+		List<QuestionItem> questionBankList = jdbcTemplate.query(" select * from questionitem where id = ? ", new Object[] { id }, new BeanPropertyRowMapper<QuestionItem>(QuestionItem.class));
+	
+		List<QuestionItemOptions> QuestionItemOptionsList = jdbcTemplate.query(" select * from questionitemoptions where itemId = ? ", new Object[] { id }, new BeanPropertyRowMapper<QuestionItemOptions>(QuestionItemOptions.class));
+	
+		if(questionBankList!=null && questionBankList.size()>0){
+			questionItem = questionBankList.get(0);
+			for(QuestionItemOptions questionItemOptions:QuestionItemOptionsList){
+				if("A".equals(questionItemOptions.getOptions())){
+					questionItem.setAnswerA(questionItemOptions.getOptionsContent());
+				}else if("B".equals(questionItemOptions.getOptions())){
+					questionItem.setAnswerB(questionItemOptions.getOptionsContent());
+				}else if("C".equals(questionItemOptions.getOptions())){
+					questionItem.setAnswerC(questionItemOptions.getOptionsContent());
+				}else if("D".equals(questionItemOptions.getOptions())){
+					questionItem.setAnswerD(questionItemOptions.getOptionsContent());
+				}else if("E".equals(questionItemOptions.getOptions())){
+					questionItem.setAnswerE(questionItemOptions.getOptionsContent());
+				}else if("F".equals(questionItemOptions.getOptions())){
+					questionItem.setAnswerF(questionItemOptions.getOptionsContent());
+				}
+			}
+		}
+		
+		return questionItem;
+	
 	}
 	
 }

@@ -1,44 +1,44 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 10.15.107.100-33061
-Source Server Version : 50521
-Source Host           : 10.15.107.100:33061
+Source Server         : local
+Source Server Version : 50051
+Source Host           : localhost:3306
 Source Database       : open_exam
 
 Target Server Type    : MYSQL
-Target Server Version : 50521
+Target Server Version : 50051
 File Encoding         : 65001
 
-Date: 2014-03-14 17:22:39
+Date: 2014-03-16 19:40:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
--- Table structure for `questionBank`
+-- Table structure for `questionbank`
 -- ----------------------------
-DROP TABLE IF EXISTS `questionBank`;
-CREATE TABLE `questionBank` (
+DROP TABLE IF EXISTS `questionbank`;
+CREATE TABLE `questionbank` (
   `id` varchar(32) NOT NULL,
   `no` varchar(20) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL COMMENT '题库',
-  `typeId` varchar(32) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `name` varchar(50) default NULL,
+  `description` varchar(500) default NULL COMMENT '题库',
+  `typeId` varchar(32) default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of questionBank
+-- Records of questionbank
 -- ----------------------------
-INSERT INTO `questionBank` VALUES ('1', '1', '1', '1', '3e8759a4144740ce9c79fa63966e2518');
-INSERT INTO `questionBank` VALUES ('2', '2', '2', '2', '3e8759a4144740ce9c79fa63966e2518');
-INSERT INTO `questionBank` VALUES ('97cef1b917124050a8c8fc34da755ed3', '3', '3', '3', null);
+INSERT INTO `questionbank` VALUES ('1', '1', '1', '1', '3e8759a4144740ce9c79fa63966e2518');
+INSERT INTO `questionbank` VALUES ('2', '2', '2', '2', '3e8759a4144740ce9c79fa63966e2518');
+INSERT INTO `questionbank` VALUES ('97cef1b917124050a8c8fc34da755ed3', '3', '3', '3', null);
 
 -- ----------------------------
--- Table structure for `questionItem`
+-- Table structure for `questionitem`
 -- ----------------------------
-DROP TABLE IF EXISTS `questionItem`;
-CREATE TABLE `questionItem` (
+DROP TABLE IF EXISTS `questionitem`;
+CREATE TABLE `questionitem` (
   `id` varchar(32) NOT NULL,
   `type` int(11) NOT NULL COMMENT '试题类型',
   `count` int(11) NOT NULL COMMENT '选项个数',
@@ -46,32 +46,43 @@ CREATE TABLE `questionItem` (
   `score` double(10,3) NOT NULL COMMENT '分数',
   `difficulty` int(11) NOT NULL COMMENT '难度',
   `content` text NOT NULL COMMENT '题干',
+  `answer` varchar(500) default NULL,
   `status` int(11) NOT NULL COMMENT '状态',
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `updateTime` datetime NOT NULL COMMENT '修改时间',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of questionItem
+-- Records of questionitem
 -- ----------------------------
-INSERT INTO `questionItem` VALUES ('1', '1', '1', '1', '1.000', '1', '1', '1', '2014-03-14 14:45:32', '2014-03-14 14:45:36');
+INSERT INTO `questionitem` VALUES ('4ddf719360a840718e8ba73f6b1e06ff', '1', '4', '1', '1.000', '1', '12', 'A', '1', '2014-03-16 15:37:13', '2014-03-16 15:37:13');
+INSERT INTO `questionitem` VALUES ('5235f795b3864622a877c405fb596161', '2', '4', '2', '5.000', '1', '11', 'A,D', '1', '2014-03-16 18:00:59', '2014-03-16 18:00:59');
 
 -- ----------------------------
--- Table structure for `questionItemOptions`
+-- Table structure for `questionitemoptions`
 -- ----------------------------
-DROP TABLE IF EXISTS `questionItemOptions`;
-CREATE TABLE `questionItemOptions` (
+DROP TABLE IF EXISTS `questionitemoptions`;
+CREATE TABLE `questionitemoptions` (
   `id` varchar(32) NOT NULL,
-  `options` varchar(50) DEFAULT NULL COMMENT '选项',
+  `options` varchar(50) default NULL COMMENT '选项',
   `optionsContent` text NOT NULL COMMENT '选项内容',
+  `itemId` varchar(32) default NULL,
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `updateTime` datetime NOT NULL COMMENT '修改时间'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of questionItemOptions
+-- Records of questionitemoptions
 -- ----------------------------
+INSERT INTO `questionitemoptions` VALUES ('559f215e2e9a4d3e8e0bd0d1e6de4f5d', 'A', '1', '4ddf719360a840718e8ba73f6b1e06ff', '2014-03-16 15:37:13', '2014-03-16 15:37:13');
+INSERT INTO `questionitemoptions` VALUES ('fb09809a65c14d568a6542cd8a6504b1', 'B', '1', '4ddf719360a840718e8ba73f6b1e06ff', '2014-03-16 15:37:13', '2014-03-16 15:37:13');
+INSERT INTO `questionitemoptions` VALUES ('d527cc46cedf4c94be0e425f968c1f67', 'C', '2', '4ddf719360a840718e8ba73f6b1e06ff', '2014-03-16 15:37:13', '2014-03-16 15:37:13');
+INSERT INTO `questionitemoptions` VALUES ('3027689d81f14ab9aea741142bc1d81c', 'D', '4', '4ddf719360a840718e8ba73f6b1e06ff', '2014-03-16 15:37:13', '2014-03-16 15:37:13');
+INSERT INTO `questionitemoptions` VALUES ('34e08325ea384546a394ab2cb5e5d6d5', 'A', '4', '5235f795b3864622a877c405fb596161', '2014-03-16 18:00:59', '2014-03-16 18:00:59');
+INSERT INTO `questionitemoptions` VALUES ('97cf40aa247248aa826301ccc7a040cb', 'B', '5', '5235f795b3864622a877c405fb596161', '2014-03-16 18:00:59', '2014-03-16 18:00:59');
+INSERT INTO `questionitemoptions` VALUES ('a5512fb990734d9fa30ec9036b68a1f0', 'C', '6', '5235f795b3864622a877c405fb596161', '2014-03-16 18:00:59', '2014-03-16 18:00:59');
+INSERT INTO `questionitemoptions` VALUES ('0ddd5bd4596a4a2bb115efc112eaa08d', 'D', '7', '5235f795b3864622a877c405fb596161', '2014-03-16 18:00:59', '2014-03-16 18:00:59');
 
 -- ----------------------------
 -- Table structure for `questiontype`
@@ -79,10 +90,10 @@ CREATE TABLE `questionItemOptions` (
 DROP TABLE IF EXISTS `questiontype`;
 CREATE TABLE `questiontype` (
   `id` varchar(32) NOT NULL,
-  `no` varchar(32) DEFAULT NULL,
-  `name` varchar(32) DEFAULT NULL,
+  `no` varchar(32) default NULL,
+  `name` varchar(32) default NULL,
   `typeStr` varchar(320) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -103,14 +114,14 @@ INSERT INTO `questiontype` VALUES ('fe58b82658d94b7f8847c4d4f9bfab4f', '14021316
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` varchar(32) NOT NULL,
-  `password` varchar(50) DEFAULT NULL,
-  `userName` varchar(50) DEFAULT NULL,
-  `realName` varchar(50) DEFAULT NULL,
-  `sex` int(11) DEFAULT NULL,
-  `birthday` datetime DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL,
-  `mobile` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `password` varchar(50) default NULL,
+  `userName` varchar(50) default NULL,
+  `realName` varchar(50) default NULL,
+  `sex` int(11) default NULL,
+  `birthday` datetime default NULL,
+  `email` varchar(30) default NULL,
+  `mobile` varchar(20) default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------

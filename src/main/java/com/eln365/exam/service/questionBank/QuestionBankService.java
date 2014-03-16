@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.eln365.exam.model.EasyUICombobox;
 import com.eln365.exam.model.questionBank.QuestionBank;
 
 /**
@@ -47,6 +48,25 @@ public class QuestionBankService {
 		paraList.add(rows);
 
 		return jdbcTemplate.query(sql.toString(), paraList.toArray(), new BeanPropertyRowMapper<QuestionBank>(QuestionBank.class));
+	}
+	
+	public List<QuestionBank> queryQuestionBankList() {
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select *  from questionBank where 1=1   ");
+		return jdbcTemplate.query(sql.toString(),  new BeanPropertyRowMapper<QuestionBank>(QuestionBank.class));
+	}
+	
+	public List<EasyUICombobox> queryBankComboboxList(){
+		List<EasyUICombobox> comboboxList = new ArrayList<EasyUICombobox>();
+		List<QuestionBank> questionBankList = queryQuestionBankList();
+		EasyUICombobox easyUICombobox = null;
+		for(QuestionBank questionBank:questionBankList){
+			easyUICombobox = new EasyUICombobox();
+			easyUICombobox.setValue(questionBank.getId());
+			easyUICombobox.setText(questionBank.getName());
+			comboboxList.add(easyUICombobox);
+		}
+		return comboboxList;
 	}
 
 	public QuestionBank queryById(String id) {

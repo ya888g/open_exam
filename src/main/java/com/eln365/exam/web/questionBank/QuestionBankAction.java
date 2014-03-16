@@ -3,6 +3,7 @@ package com.eln365.exam.web.questionBank;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -62,8 +63,12 @@ public class QuestionBankAction extends BaseAction {
 		writeToRespone(generateSingleJson("success" + ",," + questionBank.getId() + ",," + questionBank.getName()));
 	}
 	
+	public void queryBankCombobox(){
+		JSONArray json = JSONArray.fromObject(questionBankService.queryBankComboboxList());
+		writeToRespone(json.toString());
+	}
+	
 	public void delete(){
-		System.out.println("questionBank.getId():::::"+questionBank.getId());
 		questionBankService.delete(questionBank.getId());
 		writeToRespone(generateSingleJson(null));
 	}
