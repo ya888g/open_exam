@@ -97,3 +97,8 @@ http://www.2cto.com/kf/201303/197843.html
 
 easyui 分页
 http://www.cnblogs.com/huozhicheng/archive/2011/09/27/2193605.html
+
+
+JAVA-开源考试系统-免费下载-所有源码及sql
+有需要者，请加QQ群：170372541 或联系 qq：1537635861
+欢迎有需要的朋友共同完善这个考试系统
