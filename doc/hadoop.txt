@@ -1,0 +1,59 @@
+create table log_info_20131028(host string, port string, sequenceId string, level string, md5 string,  jsoname string, functionname string, ret string, md5key string, type string, reporttime string, receivetime string, timeDuration string) 
+row format delimited fields terminated by '\t';
+
+data
+syntax0410
+
+/opt/gw-uls-hadoop/dataFile1
+
+
+/home/hadoop/hive-0.9.0/bin/hive -e "load data local inpath '/opt/gw-uls-hadoop/dataFile/20131028142450102.txt'  into table log_info_20131028";
+
+createTable.sh
+
+INSERT overwrite table log_info_request
+SELECT host,port,jsoName,functionName,TYPE,count(1),SUM(timeDuration) FROM log_info_20131028  
+WHERE (type=1 or type=2 or type=3 or type=4) AND sequenceId != '' GROUP BY host,port,jsoName,functionName,TYPE;
+
+
+create table log_info_request( host string, port string, jsoname string, functionname string, type string, count string, timeDuration string)  row format delimited fields terminated by '';
+
+
+
+
+sqoop create-hive-table --connect jdbc:mysql://10.15.107.100:33061/uls_online --username hive --password 111111  --table log_info  --hive-table log_info --fields-terminated-by '\001'
+sqoop create-hive-table --connect jdbc:mysql://10.15.107.100:33061/uls_online --username hive --password 111111  --table server_info  --hive-table server_info
+sqoop create-hive-table --connect jdbc:mysql://222.73.177.26:33061/uls_waiwang --username mafei --password mafei  --table server_info  --hive-table server_info
+
+
+sqoop list-databases --connect jdbc:mysql://10.15.107.100:33061/ --username hive --password 111111
+
+sqoop import --connect jdbc:mysql://10.15.107.100:33061/uls_online --table log_info --username hive --password 111111 --hive-import --where "receiveTime>20131101000000"
+
+sqoop import --connect jdbc:mysql://10.15.107.100:33061/uls_online --table server_info --username hive --password 111111 --hive-import
+sqoop import --connect jdbc:mysql://222.73.177.26:33061/uls_waiwang --table server_info --username mafei --password mafei  --hive-import
+
+select host,port,jsoName,functionName,info,count(1) from log_info group by host,port,jsoName,functionName,info
+
+errpr:Cannot create directory /user/hive/warehouse/log_info. Name node is in safe mode
+hadoop dfsadmin -safemode leave  
+
+
+
+
+hive -S -e "select b.type_name,a.ret,a.jsoName,a.functionName,count(1) from log_info_error_20131030 a inner join server_info b on a.host=b.ip and a.port = b.monitor_port GROUP BY a.jsoName,a.functionName,a.ret,b.type_name;">/opt/gw-uls-hadoop/calFile/log_info_error_20131030.txt
+
+select host,port,jsoName,functionName,info,count(1) from log_info GROUP BY host,port,jsoName,functionName,info;
+
+select md5,info,count(1) from log_info group by md5
+
+
+/home/hadoop/hive-0.9.0/bin/hive -e "load data local inpath '/opt/gw-uls-hadoop/errorDataFile/log_info_error_20131030.txt'  into table log_info_error_20131030"
+
+
+create table log_info_error_20131030(id string, host string, port string, jsoname string, functionname string, ret string)  row format delimited fields terminated by '`';
+
+
+select b.type_name,a.ret,a.jsoName,a.functionName,count(1) from log_info a inner join server_info b on a.host=b.ip and a.port = b.monitor_port GROUP BY a.jsoName,a.functionName,a.ret,b.type_name;
+
+hadoop fs -rmr .Trash 
