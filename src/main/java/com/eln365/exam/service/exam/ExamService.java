@@ -13,4 +13,7 @@ public class ExamService {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
+	
+	
+	
 }

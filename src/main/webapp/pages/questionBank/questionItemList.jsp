@@ -108,7 +108,6 @@ function edit(id) {
 				$("#score").val(msg.score);
 				difficulty = msg.difficulty;
 				content = msg.content;
-				alert("msg.options:::"+msg.answer);
 				$("#options").val();
 				options= msg.answer;
 				answerA = msg.answerA;

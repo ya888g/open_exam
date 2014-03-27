@@ -1,38 +1,38 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : local
-Source Server Version : 50051
-Source Host           : localhost:3306
+Source Server         : 10.15.107.100-33061
+Source Server Version : 50521
+Source Host           : 10.15.107.100:33061
 Source Database       : open_exam
 
 Target Server Type    : MYSQL
-Target Server Version : 50051
+Target Server Version : 50521
 File Encoding         : 65001
 
-Date: 2014-03-16 19:40:01
+Date: 2014-03-27 16:36:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
--- Table structure for `questionbank`
+-- Table structure for `questionBank`
 -- ----------------------------
-DROP TABLE IF EXISTS `questionbank`;
-CREATE TABLE `questionbank` (
+DROP TABLE IF EXISTS `questionBank`;
+CREATE TABLE `questionBank` (
   `id` varchar(32) NOT NULL,
   `no` varchar(20) NOT NULL,
-  `name` varchar(50) default NULL,
-  `description` varchar(500) default NULL COMMENT '题库',
-  `typeId` varchar(32) default NULL,
-  PRIMARY KEY  (`id`)
+  `name` varchar(50) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL COMMENT '题库',
+  `typeId` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of questionbank
+-- Records of questionBank
 -- ----------------------------
-INSERT INTO `questionbank` VALUES ('1', '1', '1', '1', '3e8759a4144740ce9c79fa63966e2518');
-INSERT INTO `questionbank` VALUES ('2', '2', '2', '2', '3e8759a4144740ce9c79fa63966e2518');
-INSERT INTO `questionbank` VALUES ('97cef1b917124050a8c8fc34da755ed3', '3', '3', '3', null);
+INSERT INTO `questionBank` VALUES ('1', '1', '1', '1', '3e8759a4144740ce9c79fa63966e2518');
+INSERT INTO `questionBank` VALUES ('2', '2', '2', '2', '3e8759a4144740ce9c79fa63966e2518');
+INSERT INTO `questionBank` VALUES ('97cef1b917124050a8c8fc34da755ed3', '3', '3', '3', null);
 
 -- ----------------------------
 -- Table structure for `questionitem`
@@ -46,11 +46,11 @@ CREATE TABLE `questionitem` (
   `score` double(10,3) NOT NULL COMMENT '分数',
   `difficulty` int(11) NOT NULL COMMENT '难度',
   `content` text NOT NULL COMMENT '题干',
-  `answer` varchar(500) default NULL,
+  `answer` varchar(500) DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT '状态',
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `updateTime` datetime NOT NULL COMMENT '修改时间',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -65,11 +65,12 @@ INSERT INTO `questionitem` VALUES ('5235f795b3864622a877c405fb596161', '2', '4',
 DROP TABLE IF EXISTS `questionitemoptions`;
 CREATE TABLE `questionitemoptions` (
   `id` varchar(32) NOT NULL,
-  `options` varchar(50) default NULL COMMENT '选项',
+  `options` varchar(50) DEFAULT NULL COMMENT '选项',
   `optionsContent` text NOT NULL COMMENT '选项内容',
-  `itemId` varchar(32) default NULL,
+  `itemId` varchar(32) DEFAULT NULL,
   `createTime` datetime NOT NULL COMMENT '创建时间',
-  `updateTime` datetime NOT NULL COMMENT '修改时间'
+  `updateTime` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -90,10 +91,10 @@ INSERT INTO `questionitemoptions` VALUES ('0ddd5bd4596a4a2bb115efc112eaa08d', 'D
 DROP TABLE IF EXISTS `questiontype`;
 CREATE TABLE `questiontype` (
   `id` varchar(32) NOT NULL,
-  `no` varchar(32) default NULL,
-  `name` varchar(32) default NULL,
+  `no` varchar(32) DEFAULT NULL,
+  `name` varchar(32) DEFAULT NULL,
   `typeStr` varchar(320) NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -114,14 +115,14 @@ INSERT INTO `questiontype` VALUES ('fe58b82658d94b7f8847c4d4f9bfab4f', '14021316
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` varchar(32) NOT NULL,
-  `password` varchar(50) default NULL,
-  `userName` varchar(50) default NULL,
-  `realName` varchar(50) default NULL,
-  `sex` int(11) default NULL,
-  `birthday` datetime default NULL,
-  `email` varchar(30) default NULL,
-  `mobile` varchar(20) default NULL,
-  PRIMARY KEY  (`id`)
+  `password` varchar(50) DEFAULT NULL,
+  `userName` varchar(50) DEFAULT NULL,
+  `realName` varchar(50) DEFAULT NULL,
+  `sex` int(11) DEFAULT NULL,
+  `birthday` datetime DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `mobile` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------

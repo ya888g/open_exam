@@ -1,7 +1,10 @@
 package com.eln365.exam.service.questionBank;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -9,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.eln365.exam.model.questionBank.QuestionItem;
 import com.eln365.exam.model.questionBank.QuestionItemOptions;
+import com.eln365.exam.utils.ExamUtils;
 
 /**
  * 
@@ -26,7 +30,7 @@ public class QuestionItemService {
 	public Integer queryQuestionItemList() {
 		List<Object> paraList = new ArrayList<Object>();
 		StringBuilder sql = new StringBuilder();
-		sql.append(" select count(*) from questionItem where 1=1 ");
+		sql.append(" select count(*) from questionitem where 1=1 ");
 		/*if (StringUtils.isNotEmpty(typeId)) {
 			sql.append("  and typeId = ? ");
 			paraList.add(typeId);
@@ -38,7 +42,7 @@ public class QuestionItemService {
 	public List<QuestionItem> queryQuestionItemList( Integer page, Integer rows) {
 		List<Object> paraList = new ArrayList<Object>();
 		StringBuilder sql = new StringBuilder();
-		sql.append(" select *  from questionItem where 1=1   ");
+		sql.append(" select *  from questionitem where 1=1   ");
 		/*if (StringUtils.isNotEmpty(typeId)) {
 			sql.append("  and typeId = ? ");
 			paraList.add(typeId);
@@ -114,4 +118,68 @@ public class QuestionItemService {
 	
 	}
 	
+	public List<String> queryQuestionItemIdList(){
+		List<String> questionItemIdList = new ArrayList<String>();
+		String sql = " select id from questionitem ";
+		List<QuestionItem> questionItemIdListTemp = jdbcTemplate.query(sql, new BeanPropertyRowMapper<QuestionItem>(QuestionItem.class));
+		for(QuestionItem questionItem:questionItemIdListTemp){
+			questionItemIdList.add(questionItem.getId());
+		}
+		return questionItemIdList;
+	}
+	
+	public List<QuestionItem> queryRandomQuestionItemList(int randomCount) {
+		String ids = ExamUtils.convertINpara(ExamUtils.generateRandomList(queryQuestionItemIdList(), randomCount));
+		StringBuilder itemsql = new StringBuilder();
+		StringBuilder optionssql = new StringBuilder();
+		itemsql.append(" select *  from questionitem where 1=1 ");
+		optionssql.append(" select * from questionitemoptions where 1=1 ");
+		if(StringUtils.isNotEmpty(ids)){
+			itemsql.append(" and id in "+ids);
+			optionssql.append(" and itemId in "+ids);
+		}
+		optionssql.append(" order by itemId ");
+		List<QuestionItem> questionItemList = jdbcTemplate.query(itemsql.toString(), new BeanPropertyRowMapper<QuestionItem>(QuestionItem.class));
+		List<QuestionItemOptions> questionItemOptionsList = jdbcTemplate.query(optionssql.toString(), new BeanPropertyRowMapper<QuestionItemOptions>(QuestionItemOptions.class));
+		
+		for(QuestionItem questionItem:questionItemList){
+			List<QuestionItemOptions> questionItemOptionsListLocal = new ArrayList<QuestionItemOptions>();
+			int flag = 0;
+			for(QuestionItemOptions questionItemOptions:questionItemOptionsList){
+				if(StringUtils.equals(questionItem.getId(), questionItemOptions.getItemId())){
+					flag++;
+					questionItemOptionsListLocal.add(questionItemOptions);
+				}else{
+					if(flag>0){
+						break;
+					}
+				}
+			}
+			questionItem.setQuestionItemOptionsList(questionItemOptionsListLocal);
+		}
+		return questionItemList;
+	}
+	
+	
+	
+	public static void main(String args[]){
+		List<String> tempList = new ArrayList<String>();
+//		Map<Integer,Integer> indexMap = new HashMap<Integer,Integer>();
+		for(int i=0;i<10;i++){
+//			indexMap.put(i, i);
+			tempList.add(String.valueOf(i));
+		}
+		/*
+		for(Map.Entry<Integer,Integer> entry:indexMap.entrySet()){
+			System.out.println(entry.getValue());
+		}*/	
+		long start = System.currentTimeMillis();
+		List<String> randomList = ExamUtils.generateRandomList(tempList, 3);
+		System.out.println("time:::"+(System.currentTimeMillis()-start));
+		for(String random:randomList){
+			System.out.println("random:::"+random);
+		}
+		System.out.println(StringUtils.join(tempList.toArray(new String[] {}), "','"));
+		
+	}
 }

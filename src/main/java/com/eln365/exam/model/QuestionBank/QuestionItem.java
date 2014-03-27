@@ -1,6 +1,7 @@
 package com.eln365.exam.model.questionBank;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -18,8 +19,8 @@ public class QuestionItem {
 	private String content;
 	private String answer;
 	private Integer status;
-	private Date createTime;
-	private Date updateTime;
+	private String createTime;
+	private String updateTime;
 	
 	private String options;
 	private String answerA;
@@ -28,6 +29,8 @@ public class QuestionItem {
 	private String answerD;
 	private String answerE;
 	private String answerF;
+	
+	private List<QuestionItemOptions> questionItemOptionsList;
 	
 	public String getId() {
 		return id;
@@ -94,19 +97,21 @@ public class QuestionItem {
 		this.status = status;
 	}
 
-	public Date getCreateTime() {
+	
+
+	public String getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 
-	public Date getUpdateTime() {
+	public String getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
 
@@ -174,6 +179,12 @@ public class QuestionItem {
 		this.answer = answer;
 	}
 
-	
-	
+	public List<QuestionItemOptions> getQuestionItemOptionsList() {
+		return questionItemOptionsList;
+	}
+
+	public void setQuestionItemOptionsList(List<QuestionItemOptions> questionItemOptionsList) {
+		this.questionItemOptionsList = questionItemOptionsList;
+	}
+
 }

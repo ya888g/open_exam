@@ -11,9 +11,9 @@
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
 		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost:3306/open_exam?useUnicode=true&amp;characterEncoding=utf-8"></property>
+			value="jdbc:mysql://10.15.107.100:33061/open_exam?useUnicode=true&amp;characterEncoding=utf-8"></property>
 		<property name="user" value="root"></property>
-		<property name="password" value="123456"></property>
+		<property name="password" value="111111"></property>
 		<property name="acquireIncrement" value="5"></property>
 		<property name="initialPoolSize" value="10"></property>
 		<property name="maxIdleTime" value="10000"></property>

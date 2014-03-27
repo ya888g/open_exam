@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -57,7 +58,7 @@ public class QuestionItemAction extends BaseAction{
 
 	public void editGo() {
 		List<QuestionItemOptions> questionItemOptionsList = new ArrayList<QuestionItemOptions>();
-		Date dateTime  = new Date();
+		String dateTime  = ExamUtils.getCurrentDateStr();
 		questionItemOptionsList = converSetProperties(dateTime);
 		if (StringUtils.isEmpty(questionItem.getId())) {
 			questionItem.setId(ExamUtils.getUUID());
@@ -73,7 +74,7 @@ public class QuestionItemAction extends BaseAction{
 	}
 	
 	
-	private List<QuestionItemOptions> converSetProperties(Date dateTime){
+	private List<QuestionItemOptions> converSetProperties(String dateTime){
 		List<QuestionItemOptions> questionItemOptionsList = new ArrayList<QuestionItemOptions>();
 		if(StringUtils.isNotEmpty(questionItem.getAnswerA())){
 			QuestionItemOptions questionItemOptionsA = new QuestionItemOptions();
@@ -146,6 +147,15 @@ public class QuestionItemAction extends BaseAction{
 	public void delete(){
 		questionItemService.deleteItem(questionItem.getId());
 		writeToRespone(generateSingleJson(null));
+	}
+	
+	public void queryRandList() {
+		List<QuestionItem> randomQuestionItemList = questionItemService.queryRandomQuestionItemList(10);
+		/*for(QuestionItem questionItem:randomQuestionItemList){
+			System.out.println(questionItem.getContent());
+		}*/
+		String json = JSONArray.fromObject(randomQuestionItemList).toString();
+		writeToRespone(json);
 	}
 	
 	

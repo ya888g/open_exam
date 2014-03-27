@@ -13,8 +13,8 @@ public class QuestionItemOptions {
 	private String options;
 	private String optionsContent;
 	private String itemId;
-	private Date createTime;
-	private Date updateTime;
+	private String createTime;
+	private String updateTime;
 	public String getId() {
 		return id;
 	}
@@ -33,16 +33,17 @@ public class QuestionItemOptions {
 	public void setOptionsContent(String optionsContent) {
 		this.optionsContent = optionsContent;
 	}
-	public Date getCreateTime() {
+	
+	public String getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
-	public Date getUpdateTime() {
+	public String getUpdateTime() {
 		return updateTime;
 	}
-	public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
 	public String getItemId() {
